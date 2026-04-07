@@ -1,0 +1,12 @@
+# Build artifacts
+megaman99
+src/*.o
+
+# Release directory
+release/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
