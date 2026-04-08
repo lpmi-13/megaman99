@@ -1,5 +1,6 @@
 # Build artifacts
 megaman99
+test_game
 src/*.o
 
 # Release directory
