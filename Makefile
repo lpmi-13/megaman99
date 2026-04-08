@@ -40,7 +40,10 @@ ifeq ($(DEBUG),1)
     CXXFLAGS += -g -DDEBUG -O0
 endif
 
-.PHONY: all clean run
+TEST_SRC := tests/test_game.cpp
+TEST_BIN := test_game
+
+.PHONY: all clean run test
 
 all: $(GAME_NAME)
 
@@ -50,8 +53,14 @@ $(GAME_NAME): $(OBJS)
 $(SRC_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
+$(TEST_BIN): $(TEST_SRC)
+	$(CXX) -std=c++17 -Wall -Wextra -O2 -o $@ $<
+
+test: $(TEST_BIN)
+	./$(TEST_BIN)
+
 clean:
-	rm -f $(SRC_DIR)/*.o $(GAME_NAME)
+	rm -f $(SRC_DIR)/*.o $(GAME_NAME) $(TEST_BIN)
 
 run: $(GAME_NAME)
 	./$(GAME_NAME)
