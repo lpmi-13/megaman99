@@ -12,7 +12,8 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # actions/checkout@v6.0.2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Install dependencies
         run: |
@@ -34,7 +35,8 @@ jobs:
           cd release && tar -czf megaman99-linux-x86_64.tar.gz megaman99/
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        # softprops/action-gh-release@v2.6.1
+        uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe
         with:
           files: release/megaman99-linux-x86_64.tar.gz
           generate_release_notes: true
